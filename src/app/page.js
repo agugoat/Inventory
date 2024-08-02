@@ -2,7 +2,7 @@
 import Image from "next/image";
 import {useState, useEffect} from 'react'
 import { firestore } from "@/firebase"
-import { Box, Typography, Modal, Stack, TextField, Button } from "@mui/material";
+import { Box, Typography, Modal, Stack, TextField, Button, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, CssBaseline } from "@mui/material";
 import { query, collection, getDocs} from "firebase/firestore";
 import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 
@@ -80,6 +80,13 @@ export default function Home() {
       alignItems="center"
       gap={2}
     >
+      {/* Navigation Bar */}
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6">Inventory Management System</Typography>
+      </Toolbar>
+    </AppBar>
+
       <Modal open={open} onClose={handleClose}>
         <Box
           position="absolute"
