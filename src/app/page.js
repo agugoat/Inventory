@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { firestore } from "@/firebase";
+import Link from 'next/link';
 import { query, collection, getDocs, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 
 export default function Home() {
@@ -89,52 +90,46 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-base-100" data-theme="mytheme">
-      {/* DaisyUI Navigation Bar */}
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <button tabindex="0" role="button" className="btn btn-ghost lg:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-              </svg>
-            </button>
-            <ul tabindex="0" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-              <li><a>Item 1</a></li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
-              <li><a>Item 3</a></li>
-            </ul>
-          </div>
-          <a className="btn btn-ghost text-xl">Inventory Manager</a>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li><a>Home</a></li>
-            <li>
-              <details>
-                <summary>Recipes</summary>
-                <ul className="p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </details>
-            </li>
-            <li><a>About</a></li>
+   {/* DaisyUI Navigation Bar */}
+<div className="navbar bg-base-100">
+  <div className="navbar-start">
+    <div className="dropdown">
+      <button tabindex="0" role="button" className="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </button>
+      <ul tabindex="0" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        <li><a>Item 1</a></li>
+        <li>
+          <a>Parent</a>
+          <ul className="p-2">
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
           </ul>
-        </div>
-        <div className="navbar-end">
-          <input id="search-box" type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" />
-          <button id="search-button" className="btn btn-primary ml-2" onClick={searchInventory}>
-            Search
-          </button>
-        </div>
-      </div>
-      <div id="search-results" className="p-4"></div>
+        </li>
+        <li><a>Item 3</a></li>
+      </ul>
+    </div>
+    <Link href="/" passHref>
+      <a className="btn btn-ghost text-xl">Inventory Manager</a>
+    </Link>
+  </div>
+  <div className="navbar-center hidden lg:flex">
+    <ul className="menu menu-horizontal px-1">
+      <li><Link href="/"><a>Home</a></Link></li>
+      <li><Link href="/app"><a>Inventory</a></Link></li> {/* Links to the Inventory page */}
+      <li><Link href="/app"><a>About</a></Link></li>
+    </ul>
+  </div>
+  <div className="navbar-end">
+    <input id="search-box" type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" />
+    <button id="search-button" className="btn btn-primary ml-2" onClick={searchInventory}>
+      Search
+    </button>
+  </div>
+</div>
+<div id="search-results" className="p-4"></div>
 
       {/* Modal for Adding Items */}
       {open && (
