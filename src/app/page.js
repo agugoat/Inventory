@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { firestore } from "@/firebase";
-import Link from 'next/link';
 import { query, collection, getDocs, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 
 export default function Home() {
@@ -111,15 +110,14 @@ export default function Home() {
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <Link href="/" passHref>
-      <a className="btn btn-ghost text-xl">Inventory Manager</a>
-    </Link>
+    <a className="btn btn-ghost text-xl">Inventory Manager</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><Link href="/"><a>Home</a></Link></li>
-      <li><Link href="/app"><a>Inventory</a></Link></li> {/* Links to the Inventory page */}
-      <li><Link href="/app"><a>About</a></Link></li>
+    <li><a href="/">Home</a></li>
+      <li><a href="/inventory">Inventory</a></li>
+      <li><a href = "/about" >About</a></li>
+
     </ul>
   </div>
   <div className="navbar-end">
